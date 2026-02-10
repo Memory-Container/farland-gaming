@@ -1,0 +1,24 @@
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    text-align: left !important;
+}
+input:not([type="checkbox"]), textarea {
+    max-width: 120px;
+    outline: none;
+    padding: 7px 10px 7px 10px;
+    width: 100%;
+    font-size: 14px;
+    color: rgb(51, 65, 85);
+    border-radius: 5px;
+    border: 1px solid rgb(183, 183, 183);
+    transition: all .3s ease;
+    box-shadow: inset 2px 2px 6px rgb(220, 220, 220), 0 0 0 transparent;
+    resize: none;
+}
+.gambling-window {
+    display: none;
+    margin-bottom: 20px;
+}

@@ -6,6 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gambling.css">
+    <link rel="stylesheet" href="flipCard.css">
+    <link rel="stylesheet" href="rps.css">
+    <link rel="stylesheet" href="modal.css">
 </head>
 <body>
     <header>
@@ -13,10 +17,10 @@
             <nav class="main-nav">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Trang chủ</a>
+                        <a class="nav-link" href="" onclick="scrollMain()">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Game Menu</a>
+                        <a class="nav-link" href="" onclick="scrollGameMenu()">Game Menu</a>
                     </li>
                 </ul>
             </nav>
@@ -40,10 +44,13 @@
                 <div>
                     CHÀO MỪNG ĐẾN VỚI<br>
                     <span class="logo-text">
-                        FARLAND GAMING
+                        FARLAND GAMES
                     </span>
                     <div class="desc">
                         Một website với nhiều trò chơi cho bạn trải nghiệm!
+                        <div class="small-info" style="font-size: 15px;">
+                            Cụ thể là 3 trò
+                        </div>
                     </div>
                 </div>
                 <button class="primary scale" onclick="scrollGameMenu()">
@@ -52,13 +59,102 @@
             </div>
         </section>
         <section class="menu-section">
-            <div class="container">
-                <button class="game-button"></button>
-                <button class="game-button"></button>
-                <button class="game-button"></button>
-                <button class="game-button"></button>
-                <button class="game-button"></button>
-                <button class="game-button"></button>
+            <div class="container" id="gameMenu">
+                <div class="title" style="display: flex;flex-direction: column; gap: 5px;">
+                    Muốn chơi gì nào!
+                    <span class="small-info" style="font-size: 20px;"
+                    title="Bạn sẽ nhận được Game Shard sau khi hoàn thành mỗi trò chơi">
+                     Game Shard: <span class="shard">0</span>
+                    </span>
+                </div>
+                <div class="game-menu">
+                    <button class="game-button secondary" onclick="openGame(1)">Kéo Búa Bao</button>
+                    <button class="game-button secondary" onclick="openGame(2)">Lật thẻ</button>
+                    <button class="game-button secondary" onclick="openGame(3)">Cá cược</button>
+                </div>
+            </div>
+            <div class="container" id="game1">
+                <h1>Kéo búa bao</h1>
+                <div class="small-info" style="font-size: 18px;">
+                    Kéo thắng Bao. Búa thắng Kéo. Bao thắng Búa<br>
+                    Nếu bạn thắng thì sẽ được 8 Game Shard, ngược lại sẽ bị trừ 12, hòa thì được 3 Game Shard.<br>Nếu Game Shard ít hơn 12 thì sẽ không được chơi nữa
+                </div>
+                <div class="gameShard">
+                    Game Shard: <span class="shard">0</span>
+                </div>
+                <div class="game-board" id="rps">
+                    <div class="result-window">
+                        <div class="result" id="result">
+
+                        </div>
+                        <div class="user">
+                            <div class="user-choice" id="user">
+                                <i class="fa-solid fa-x"></i>
+                            </div>
+                            <div>
+                                Người chơi
+                            </div>
+                        </div>
+                        <div class="bot">
+                            <div class="bot-choice" id="bot">
+                                <i class="fa-solid fa-x"></i>
+                            </div>
+                            <div>
+                                Máy tính
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choice-container">
+                        <div>                     
+                            <div style="font-size: 24px; margin-bottom: 10px;">Chọn thôi nào</div>
+                            <div class="choices">
+                                <button class="choice secondary" onclick="choose('rock')">👊</button>
+                                <button class="choice secondary" onclick="choose('paper')">✋</button>
+                                <button class="choice secondary" onclick="choose('scissors')">✌️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 10px">
+                    <button class="primary disabled" id="reset" onclick="RPSreset()">Chơi lại</button>
+                    <button class="secondary important" onclick="returnToMenu()">Thoát</button>
+                </div>
+            </div>
+            <div class="container" id="game2">
+                <h1>Lật thẻ</h1>
+                <div class="small-info" style="font-size: 18px;">
+                    Chọn 2 tầm thẻ. Nếu chúng có cùng 1 hình thì sẽ giữ nguyên trạng thái lật. Trò chơi sẽ kết thúc khi tất cả thẻ đã được lật<br>
+                    (+16 Game Shard sau khi trò kết thúc)
+                </div>
+                <div class="gameShard">
+                    Game Shard: <span class="shard">0</span>
+                </div>
+                <div class="game-board" id="flipCard">
+
+                </div>
+                <button class="secondary important" onclick="returnToMenu()">Thoát</button>
+            </div>
+            <div class="container" id="game3">
+                <h1>Cá cược</h1>
+                <div class="small-info" style="font-size: 18px;">
+                    Nếu bạn thắng thì sẽ được cộng từ gấp 1.25 đến 3 lần số Game Shard đã cược<br>
+                    Ngược lại nếu thua thì sẽ bị trừ từ 2 đến 5 lần số Game Shard đã cược<br>
+                    Bạn không thể cược nếu Game Shard bé hơn hoặc bằng 0 (Không có tiền, cá cược kiểu gì)
+                </div>
+                <div class="gameShard">
+                    Game Shard: <span class="shard">0</span>
+                </div>
+                <div class="game-board">
+                    <div class="gambling-window">
+                        &nbsp;
+                    </div>
+                    <input id="gambling-percentage" placeholder="% cược" type="number" min="1" max="100">
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 10px">
+                    <button class="primary gambling disabled" id="head" onclick="gamble('head')">Ngửa</button>
+                    <button class="primary gambling disabled" id="tails" onclick="gamble('tails')">Úp</button>
+                    <button class="secondary important" onclick="returnToMenu()">Thoát</button>
+                </div>
             </div>
         </section>
     </main>
@@ -67,5 +163,9 @@
     </footer>
 </body>
 <script src="script.js"></script>
+<script src="gambling.js"></script>
+<script src="modal.js"></script>
+<script src="flipCard.js"></script>
+<script src="rps.js"></script>
 <script src="time.js"></script>
 </html>
