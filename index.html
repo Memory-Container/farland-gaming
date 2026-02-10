@@ -144,15 +144,25 @@
                 <div class="gameShard">
                     Game Shard: <span class="shard">0</span>
                 </div>
-                <div class="game-board">
+                <div class="game-board" style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-direction: column;">
+                    <div class="coin">
+                        <div class="inner-coin">
+                            <div class="coin-head">
+                                Ngửa
+                            </div>
+                            <div class="coin-tails">
+                                Úp
+                            </div>
+                        </div>
+                    </div>
                     <div class="gambling-window">
                         &nbsp;
                     </div>
                     <input id="gambling-percentage" placeholder="% cược" type="number" min="1" max="100">
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 10px">
-                    <button class="primary gambling disabled" id="head" onclick="gamble('head')">Ngửa</button>
-                    <button class="primary gambling disabled" id="tails" onclick="gamble('tails')">Úp</button>
+                    <button class="primary gambling disabled" id="head" onclick="startAnimation('head')">Ngửa</button>
+                    <button class="primary gambling disabled" id="tails" onclick="startAnimation('tails')">Úp</button>
                     <button class="secondary important" onclick="returnToMenu()">Thoát</button>
                 </div>
             </div>

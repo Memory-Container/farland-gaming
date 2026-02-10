@@ -26,6 +26,7 @@ html, body {
     z-index: 1;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
 }
 header {
     width: 100%;

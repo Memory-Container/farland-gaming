@@ -60,6 +60,7 @@ setInterval(() => {
         choiceButton.forEach(element => {
             element.style.filter = 'contrast(1) brightness(0.5) grayscale(1)'
         });
+        resetButton.classList.remove("disabled")
     } else {
         choiceButton.forEach(element => {
             element.style.filter = 'contrast(1) brightness(1)'
