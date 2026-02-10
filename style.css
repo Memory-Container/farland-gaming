@@ -306,4 +306,7 @@ button.important:hover {
         font-size: 35px;
         font-weight: bold;
     }
+    .small-info {
+        font-size: 15px !important;
+    }
 }
