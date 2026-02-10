@@ -33,7 +33,6 @@ function gamble(choice) {
     resultText[1] = randomChoice == "head" ? "ngửa" : "úp"
     gamblingWindow.style.display = 'flex'
     gamblingWindow.textContent = `Kết quả là ${resultText[0]}, đồng xu ảo đang là mặt ${resultText[1]}`
-    console.log(random, randomChoice, choice, Math.max(Math.floor(random*3), 1.25), Math.max(Math.floor(random*2), 0.25))
     updateShardCount()
 }
 setInterval(() => {

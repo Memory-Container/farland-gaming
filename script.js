@@ -1,7 +1,7 @@
 const button = document.querySelectorAll("button")
 let main = document.querySelector('main')
 const a = document.querySelectorAll("a")
-let gameShard = 0
+let gameShard = 24
 let shardMult = [1, 2, 1]
 a.forEach((element) => {
     element.addEventListener("click", (e) => {
@@ -69,3 +69,4 @@ function returnToMenu() {
     flipCardreset()
     RPSreset()
 }
+updateShardCount()
